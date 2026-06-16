@@ -116,72 +116,72 @@ img { max-width: 100%; height: auto; display: block; }
   padding-top: clamp(40px, 8vw, 100px);
   text-align: center;
 }
-.hero-eyebrow {
+/* ─── Pill «Приём по рекомендации» — закрытый клуб vibe ─── */
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  margin-bottom: clamp(28px, 4vw, 44px);
   font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(182, 153, 104, 0.85);
-  margin-bottom: clamp(20px, 3vw, 32px);
+  color: rgba(234, 230, 220, 0.82);
+  border: 1px solid rgba(182, 153, 104, 0.38);
+  border-radius: 999px;
+  background: rgba(182, 153, 104, 0.05);
 }
-.hero-eyebrow .sep { margin: 0 14px; opacity: 0.5; }
+.hero-pill-ico { color: var(--gold); flex: 0 0 auto; }
+.hero-pill-sep { color: rgba(182, 153, 104, 0.5); }
 
-.hero-title {
+/* ─── HERO Title (private banking, не монументальный) ─── */
+.hero-title--private {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(4rem, 13vw, 11rem);
-  letter-spacing: 0.05em;
-  line-height: 0.95;
-  margin: 0 0 clamp(24px, 4vw, 44px);
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  letter-spacing: -0.005em;
+  line-height: 1.08;
+  margin: 0 0 clamp(28px, 4vw, 44px);
   color: #F2EEE4;
-  text-transform: uppercase;
+  text-transform: none;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.hero-title em {
+.hero-title--private em {
   font-style: italic;
   color: var(--gold);
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   font-weight: 300;
 }
 
+/* ─── Lede — короткий и сильный ─── */
 .hero-lede {
   font-family: var(--serif);
   font-weight: 300;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  line-height: 1.45;
+  max-width: 680px;
+  margin: 0 auto 18px;
+  color: rgba(234, 230, 220, 0.92);
+}
+.hero-lede em {
   font-style: italic;
-  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
-  line-height: 1.4;
-  max-width: 720px;
-  margin: 0 auto clamp(28px, 4vw, 44px);
-  color: rgba(234, 230, 220, 0.88);
+  color: var(--gold);
 }
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px 36px;
-  width: max-content;
-  max-width: 100%;
-  margin: 0 auto clamp(36px, 5vw, 56px);
-  padding: 22px 40px;
-  border-top: 1px solid rgba(182, 153, 104, 0.22);
-  border-bottom: 1px solid rgba(182, 153, 104, 0.22);
-}
-.hero-meta-item {
-  font-family: var(--sans);
-  font-size: 0.74rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+.hero-sublede {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 0 auto clamp(40px, 5vw, 56px);
   color: rgba(234, 230, 220, 0.62);
 }
-.hero-meta-item strong {
-  display: block;
-  font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  color: var(--gold);
-  margin-top: 6px;
-}
 
+/* ─── Главный CTA ─── */
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -210,12 +210,46 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .hero-sub-cta {
   display: block;
-  margin-top: 20px;
+  margin: 18px 0 0;
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(234, 230, 220, 0.5);
+  color: rgba(234, 230, 220, 0.45);
+}
+
+/* ─── 3 stats — hairlines + caption (closed-club tone) ─── */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 760px;
+  margin: clamp(54px, 7vw, 84px) auto 0;
+  border-top: 1px solid rgba(182, 153, 104, 0.22);
+  border-bottom: 1px solid rgba(182, 153, 104, 0.22);
+}
+.hero-stat {
+  padding: 26px 18px;
+  text-align: center;
+  border-left: 1px solid rgba(182, 153, 104, 0.12);
+}
+.hero-stat:first-child { border-left: 0; }
+.hero-stat-num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.1;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.hero-stat-cap {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(234, 230, 220, 0.55);
+  line-height: 1.4;
 }
 
 /* ─── Общая секция (светлая) ─── */

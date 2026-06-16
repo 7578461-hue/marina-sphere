@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=2" />
+  <link rel="stylesheet" href="/styles.css?v=3" />
 
   <script>
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -26,48 +26,66 @@
 </head>
 <body>
 
-  <!-- ───────── HERO (тёмный) ───────── -->
+  <!-- ───────── HERO (тёмный · private banking) ───────── -->
   <header class="hero">
     <nav class="topbar">
-      <a href="#" class="brand">Сфера <span class="dot">·</span> Marina Lodvikova</a>
+      <a href="#" class="brand">Сфера</a>
       <div class="topnav">
         <a href="#audience">Для кого</a>
         <a href="#program">Программа</a>
         <a href="#marina">Марина</a>
         <a href="#price">Стоимость</a>
-        <a href="#apply" class="nav-cta tg-cta"
-           data-tg="Здравствуйте, Марина! Прочитал про «Сферу» — хочу узнать подробнее и подать заявку.">Подать заявку</a>
+        <a href="https://t.me/Diamondmari" target="_blank" rel="noopener" class="nav-cta tg-cta"
+           data-tg="Здравствуйте, Марина! Прочитал про «Сферу» — хочу запросить приглашение.">Запросить приглашение</a>
       </div>
     </nav>
 
     <div class="container hero-inner">
-      <div class="hero-eyebrow">
-        Закрытый мастермайнд
-        <span class="sep">·</span>
-        4 месяца
-        <span class="sep">·</span>
-        набор 2026
+
+      <div class="hero-pill">
+        <svg class="hero-pill-ico" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M3.5 5.5V4a3 3 0 116 0v1.5M2.5 5.5h8v6h-8v-6z" stroke="currentColor" stroke-width="0.9" fill="none"/>
+          <circle cx="6.5" cy="8.5" r="0.8" fill="currentColor"/>
+        </svg>
+        <span>Приём по&nbsp;рекомендации</span>
+        <span class="hero-pill-sep">·</span>
+        <span>Набор 2026</span>
       </div>
 
-      <h1 class="hero-title">Сфе<em>ра</em></h1>
+      <h1 class="hero-title hero-title--private">
+        Закрытый круг<br/>
+        <em>для&nbsp;тех, кто&nbsp;выбрал&nbsp;глубину</em>
+      </h1>
 
       <p class="hero-lede">
-        Четыре месяца. Закрытый круг сильных людей.<br/>
-        Рост в&nbsp;трёх сферах&nbsp;— реализация, семья, личное.
+        Без&nbsp;шума. Без&nbsp;публичности. <em>Только&nbsp;свои.</em>
+      </p>
+      <p class="hero-sublede">
+        Четыре месяца глубокой работы в&nbsp;узком кругу. Мастермайнд с&nbsp;разбором каждого, телесные практики, личная встреча с&nbsp;экспертом уровня министра или крупного предпринимателя.
       </p>
 
-      <div class="hero-meta">
-        <div class="hero-meta-item">формат<strong>оффлайн</strong></div>
-        <div class="hero-meta-item">встречи<strong>4 × раз в месяц</strong></div>
-        <div class="hero-meta-item">разбор<strong>по часу на каждого</strong></div>
-        <div class="hero-meta-item">ведёт<strong>Марина Лодвикова</strong></div>
-      </div>
-
-      <a href="#program" class="hero-cta">
-        Что внутри программы
+      <a href="https://t.me/Diamondmari" target="_blank" rel="noopener" class="hero-cta tg-cta"
+         data-tg="Здравствуйте, Марина! Прочитал про «Сферу». Хочу запросить приглашение — расскажу о себе в личной переписке.">
+        Запросить приглашение
         <span class="arrow">→</span>
       </a>
-      <span class="hero-sub-cta">или сразу — <a href="#apply" style="color: rgba(234,230,220,0.7); text-decoration: underline; text-underline-offset: 4px;">подать заявку</a></span>
+      <p class="hero-sub-cta">Собеседование с&nbsp;Мариной — лично</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">до&nbsp;8</div>
+          <div class="hero-stat-cap">мест в&nbsp;наборе</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-cap">оффлайн-встречи · Москва</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">по&nbsp;отбору</div>
+          <div class="hero-stat-cap">состав собирается лично</div>
+        </div>
+      </div>
+
     </div>
   </header>
 
