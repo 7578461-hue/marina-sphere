@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=4" />
+  <link rel="stylesheet" href="/styles.css?v=5" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="theme-color" content="#0E0E0E" />
 
@@ -51,6 +51,29 @@
            data-tg="Здравствуйте, Марина! Прочитал про «Сферу» — хочу запросить приглашение.">Запросить приглашение</a>
       </div>
     </nav>
+
+    <!-- Backdrop emblem — большой glyph «Сферы» как «маска» клуба -->
+    <svg class="hero-backdrop" viewBox="0 0 600 600" aria-hidden="true">
+      <defs>
+        <radialGradient id="emblemGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#B69968" stop-opacity="0.22"/>
+          <stop offset="55%" stop-color="#B69968" stop-opacity="0.04"/>
+          <stop offset="100%" stop-color="#B69968" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- glow за эмблемой -->
+      <circle cx="300" cy="300" r="280" fill="url(#emblemGlow)"/>
+      <!-- внешнее кольцо -->
+      <circle cx="300" cy="300" r="240" fill="none" stroke="#B69968" stroke-width="0.7" opacity="0.55"/>
+      <!-- среднее кольцо -->
+      <circle cx="300" cy="300" r="178" fill="none" stroke="#B69968" stroke-width="0.5" opacity="0.32"/>
+      <!-- внутреннее кольцо -->
+      <circle cx="300" cy="300" r="116" fill="none" stroke="#B69968" stroke-width="0.4" opacity="0.2"/>
+      <!-- орбитальные точки-светила -->
+      <circle cx="450" cy="180" r="3.5" fill="#B69968" opacity="0.7"/>
+      <circle cx="156" cy="402" r="2.5" fill="#B69968" opacity="0.45"/>
+      <circle cx="420" cy="430" r="1.8" fill="#B69968" opacity="0.32"/>
+    </svg>
 
     <div class="container hero-inner">
 
