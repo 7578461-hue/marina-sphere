@@ -824,11 +824,74 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ─── Адаптив ─── */
 @media (max-width: 900px) {
+  /* Топбар: бренд компактнее, скрыть якоря, оставить только CTA */
   .topbar { padding: 16px 20px; }
-  .topnav { gap: 16px; }
+  .brand { gap: 10px; }
+  .brand-mark { width: 26px; height: 26px; flex: 0 0 26px; }
+  .brand-word { font-size: 0.95rem; letter-spacing: 0.3em; padding-top: 1px; }
+  .topnav { gap: 12px; }
   .topnav a:not(.nav-cta) { display: none; }
-  .topnav .nav-cta { padding: 8px 14px; font-size: 0.66rem; }
+  .topnav .nav-cta {
+    padding: 9px 14px;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
 
+  /* Hero: сжатая типографика, аккуратные отступы */
+  .hero { padding-bottom: clamp(60px, 10vw, 90px); }
+  .hero-inner { padding-top: clamp(28px, 6vw, 56px); }
+  .hero-pill {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    padding: 8px 14px;
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+  .hero-title--private {
+    font-size: clamp(2rem, 7.5vw, 2.8rem);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero-lede {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+  .hero-sublede {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 32px;
+  }
+  .hero-cta {
+    padding: 15px 24px;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    gap: 10px;
+  }
+  .hero-sub-cta {
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+  }
+
+  /* Stats: вертикально, тонкие hairlines между ними */
+  .hero-stats {
+    grid-template-columns: 1fr;
+    margin-top: clamp(36px, 6vw, 52px);
+    border-bottom: 1px solid rgba(182, 153, 104, 0.22);
+  }
+  .hero-stat {
+    padding: 18px 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(182, 153, 104, 0.12);
+  }
+  .hero-stat:last-child { border-bottom: 0; }
+  .hero-stat-num { font-size: 1.5rem; }
+  .hero-stat-cap { font-size: 0.62rem; letter-spacing: 0.2em; }
+
+  /* Backdrop: чуть приглушить чтобы не давить текст */
+  .hero-backdrop { opacity: 0.7; }
+
+  /* Светлые секции — внутренние сетки */
   .audience-grid { grid-template-columns: 1fr; gap: 28px; }
   .spheres-grid { grid-template-columns: 1fr; gap: 16px; }
   .program-grid { grid-template-columns: 1fr; gap: 0; }
@@ -838,11 +901,66 @@ img { max-width: 100%; height: auto; display: block; }
 
   .marina-grid { grid-template-columns: 1fr; gap: 32px; }
   .marina-photo { max-width: 360px; margin: 0 auto; }
+
+  /* Topbar nav layout — wrap-friendly */
+  .topbar { flex-wrap: nowrap; }
+
+  /* Футер компактнее */
+  .footer-mark { width: 50px; height: 50px; }
+  .footer-word { font-size: 1rem; }
+  .footer-links { gap: 12px 20px; }
+  .footer-links a { font-size: 0.66rem; letter-spacing: 0.2em; }
 }
 
 @media (max-width: 560px) {
-  .hero-title { letter-spacing: 0.03em; }
-  .hero-meta { padding: 18px 20px; gap: 14px 22px; }
-  .hero-cta { padding: 16px 26px; font-size: 0.72rem; letter-spacing: 0.26em; }
+  /* Топбар на узком экране: бренд + сжатая CTA */
+  .brand-word { font-size: 0.88rem; letter-spacing: 0.28em; }
+  .topnav .nav-cta {
+    padding: 8px 12px;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-pill {
+    font-size: 0.55rem;
+    letter-spacing: 0.16em;
+    padding: 7px 12px;
+    gap: 6px;
+  }
+  .hero-pill-sep { display: none; }
+  .hero-title--private {
+    font-size: clamp(1.7rem, 8.5vw, 2.3rem);
+    letter-spacing: 0;
+  }
+  .hero-lede { font-size: 1.05rem; }
+  .hero-sublede { font-size: 0.92rem; }
+  .hero-cta {
+    padding: 14px 20px;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+  }
+
+  /* Backdrop на телефоне — компактнее, чтобы не выходить за края */
+  .hero-backdrop {
+    width: 110vmin;
+    height: 110vmin;
+    opacity: 0.55;
+  }
+
   .price-amount { font-size: clamp(3rem, 14vw, 5rem); }
+
+  /* Контейнер — чуть тоньше отступы */
+  .container { width: min(100% - 32px, var(--w-container)); }
+}
+
+@media (max-width: 380px) {
+  /* iPhone SE / mini — самое узкое */
+  .brand-word { font-size: 0.82rem; letter-spacing: 0.24em; }
+  .topnav .nav-cta {
+    padding: 7px 10px;
+    font-size: 0.54rem;
+    letter-spacing: 0.14em;
+  }
+  .hero-pill { font-size: 0.52rem; padding: 6px 11px; }
+  .hero-title--private { font-size: 1.85rem; }
 }
