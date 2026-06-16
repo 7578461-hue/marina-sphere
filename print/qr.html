@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сфера · QR-код приглашения</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:      #FAF7F0;
+      --gold:       #8C7649;
+      --gold-soft:  #B69968;
+      --graphite:   #2A2520;
+      --graphite-2: rgba(42, 37, 32, 0.62);
+      --hairline:   rgba(42, 37, 32, 0.22);
+      --serif:      'Cormorant Garamond', 'Times New Roman', serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: #2a2520;
+      font-family: var(--serif);
+      color: var(--graphite);
+      -webkit-font-smoothing: antialiased;
+      padding: 30px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: rgba(234, 230, 220, 0.7);
+      background: rgba(0,0,0,0.5);
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(182, 153, 104, 0.3);
+    }
+    .controls button {
+      background: var(--gold-soft);
+      color: #0E0E0E;
+      border: 0;
+      padding: 8px 16px;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 999px;
+    }
+    .controls button:hover { background: #C9A977; }
+
+    /* ─── A4 страница ─── */
+    .a4 {
+      width: 210mm;
+      height: 297mm;
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(140, 118, 73, 0.06) 0%, transparent 60%),
+        var(--paper);
+      color: var(--graphite);
+      padding: 22mm 18mm;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Рамка с уголками */
+    .a4-frame {
+      position: absolute;
+      top: 12mm; left: 12mm; right: 12mm; bottom: 12mm;
+      border: 0.4mm solid var(--hairline);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .a4-frame::before, .a4-frame::after {
+      content: '';
+      position: absolute;
+      width: 4mm; height: 4mm;
+      border: 0.6mm solid var(--gold);
+    }
+    .a4-frame::before {
+      top: -2mm; left: -2mm;
+      border-right: 0; border-bottom: 0;
+    }
+    .a4-frame::after {
+      bottom: -2mm; right: -2mm;
+      border-left: 0; border-top: 0;
+    }
+
+    .a4 > * { position: relative; z-index: 1; }
+
+    /* ─── Брендинг сверху ─── */
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4mm;
+    }
+    .brand-mark {
+      width: 11mm;
+      height: 11mm;
+      color: var(--gold);
+    }
+    .brand-word {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 5.5mm;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-left: 0.4em;
+    }
+    .brand-tagline {
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 2.6mm;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-top: 5mm;
+    }
+
+    /* ─── Hairline-разделитель ─── */
+    .divider {
+      width: 30mm;
+      height: 0.3mm;
+      background: var(--gold);
+      opacity: 0.45;
+      margin: 9mm auto 0;
+    }
+
+    /* ─── Главное приглашение ─── */
+    .invite {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8mm;
+      padding-top: 4mm;
+    }
+    .invite-eyebrow {
+      font-family: var(--sans);
+      font-size: 2.8mm;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+    .invite-title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 16mm;
+      line-height: 1.05;
+      color: var(--graphite);
+      text-align: center;
+      max-width: 160mm;
+    }
+    .invite-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ─── QR-код ─── */
+    .qr-wrap {
+      position: relative;
+      padding: 8mm;
+      background: #FFFFFF;
+      border: 0.4mm solid var(--hairline);
+      box-shadow: 0 4mm 20mm rgba(42, 37, 32, 0.1);
+    }
+    .qr-wrap::before, .qr-wrap::after,
+    .qr-corner-tr, .qr-corner-bl {
+      content: '';
+      position: absolute;
+      width: 5mm; height: 5mm;
+      border: 0.7mm solid var(--gold);
+    }
+    .qr-wrap::before { top: -1.5mm; left: -1.5mm; border-right: 0; border-bottom: 0; }
+    .qr-wrap::after  { bottom: -1.5mm; right: -1.5mm; border-left: 0; border-top: 0; }
+    .qr-corner-tr    { top: -1.5mm; right: -1.5mm; border-left: 0; border-bottom: 0; }
+    .qr-corner-bl    { bottom: -1.5mm; left: -1.5mm; border-right: 0; border-top: 0; }
+
+    .qr-image {
+      display: block;
+      width: 90mm;
+      height: 90mm;
+    }
+
+    .qr-cta {
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 3mm;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--graphite-2);
+    }
+    .qr-cta strong {
+      color: var(--graphite);
+      font-weight: 500;
+    }
+
+    .qr-url {
+      font-family: var(--sans);
+      font-size: 2.4mm;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: lowercase;
+    }
+
+    /* ─── Footer ─── */
+    .footer-meta {
+      text-align: center;
+      margin-top: auto;
+      padding-top: 6mm;
+      font-family: var(--sans);
+      font-size: 2.4mm;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(42, 37, 32, 0.48);
+    }
+    .footer-meta .dot { color: var(--gold); margin: 0 0.7em; }
+
+    @media print {
+      body { background: white; padding: 0; min-height: auto; gap: 0; }
+      .controls { display: none !important; }
+      .a4 { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <span>QR → marina-sphere.vercel.app</span>
+    <button onclick="window.print()">Печать / PDF</button>
+  </div>
+
+  <div class="a4">
+    <div class="a4-frame"></div>
+
+    <!-- ━━━ Брендинг ━━━ -->
+    <div class="brand-row">
+      <svg class="brand-mark" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18.4" fill="none" stroke="currentColor" stroke-width="0.7"/>
+        <circle cx="20" cy="20" r="13.2" fill="none" stroke="currentColor" stroke-width="0.45" opacity="0.55"/>
+        <circle cx="24.6" cy="13" r="1.3" fill="currentColor"/>
+      </svg>
+      <div class="brand-word">Сфера</div>
+    </div>
+    <div class="brand-tagline">Закрытый круг · Набор 2026</div>
+    <div class="divider"></div>
+
+    <!-- ━━━ Приглашение + QR ━━━ -->
+    <div class="invite">
+      <div class="invite-eyebrow">Войти в&nbsp;круг</div>
+      <h1 class="invite-title">
+        Наведите камеру<br/>
+        и&nbsp;<em>откройте сферу</em>
+      </h1>
+
+      <div class="qr-wrap">
+        <span class="qr-corner-tr"></span>
+        <span class="qr-corner-bl"></span>
+        <img class="qr-image" src="qr-sphere.png" alt="QR-код · marina-sphere.vercel.app" />
+      </div>
+
+      <div class="qr-cta">
+        <strong>Откройте камеру телефона</strong><br/>
+        и&nbsp;наведите на&nbsp;код
+      </div>
+
+      <div class="qr-url">marina-sphere.vercel.app</div>
+    </div>
+
+    <!-- ━━━ Footer ━━━ -->
+    <div class="footer-meta">
+      Marina Lodvikova
+      <span class="dot">·</span>
+      Москва
+    </div>
+  </div>
+
+</body>
+</html>
