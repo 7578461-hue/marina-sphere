@@ -175,6 +175,14 @@
       margin-top: 5mm;
     }
 
+    /* Космический орнаментный фриз */
+    .cosmos-ornament {
+      display: block;
+      width: 160mm;
+      height: 22mm;
+      margin: 8mm auto 4mm;
+    }
+
     /* ─── Главная — большая цифра места ─── */
     .place {
       flex: 1;
@@ -275,7 +283,7 @@
   <!-- Контролы для preview — на печать не идут -->
   <div class="controls">
     <span>Номер места:</span>
-    <input type="text" id="numInput" value="12" maxlength="3" />
+    <input type="text" id="numInput" value="10" maxlength="3" />
     <button onclick="window.print()">Печать / PDF</button>
   </div>
 
@@ -308,13 +316,50 @@
       </svg>
       <div class="brand-word">Сфера</div>
     </div>
-    <div class="brand-tagline">Закрытая встреча · 2026</div>
+    <div class="brand-tagline">Ужин · 2026</div>
+
+    <!-- ━━━ Космический фриз — орбиты, планеты, звёзды ━━━ -->
+    <svg class="cosmos-ornament" viewBox="0 0 400 56" aria-hidden="true">
+      <!-- центральная hairline-ось -->
+      <line x1="20" y1="28" x2="380" y2="28" stroke="#8C7649" stroke-width="0.25" opacity="0.32"/>
+
+      <!-- широкая эллиптическая орбита через всё -->
+      <ellipse cx="200" cy="28" rx="170" ry="14" fill="none" stroke="#8C7649" stroke-width="0.35" opacity="0.55"/>
+
+      <!-- центральная сфера (солнце клуба) -->
+      <circle cx="200" cy="28" r="6.4" fill="none" stroke="#8C7649" stroke-width="0.5"/>
+      <circle cx="200" cy="28" r="4" fill="none" stroke="#8C7649" stroke-width="0.35" opacity="0.55"/>
+      <circle cx="202.5" cy="25" r="0.85" fill="#8C7649"/>
+
+      <!-- Сатурн справа с кольцом -->
+      <ellipse cx="310" cy="28" rx="10.5" ry="2.2" fill="none" stroke="#8C7649" stroke-width="0.35" opacity="0.7"/>
+      <circle cx="310" cy="28" r="3.4" fill="#8C7649" opacity="0.9"/>
+
+      <!-- маленькая планета слева -->
+      <circle cx="80" cy="28" r="2.6" fill="#8C7649" opacity="0.85"/>
+
+      <!-- ещё крошечная планета -->
+      <circle cx="125" cy="28" r="1.3" fill="#8C7649" opacity="0.7"/>
+
+      <!-- комета — стилизованная траектория (как с фото Гагарина) -->
+      <path d="M 350 12 Q 365 14 372 22" fill="none" stroke="#8C7649" stroke-width="0.4" opacity="0.55" stroke-linecap="round"/>
+      <circle cx="372" cy="22" r="0.85" fill="#8C7649"/>
+
+      <!-- россыпь звёзд -->
+      <circle cx="30" cy="14" r="0.6" fill="#8C7649" opacity="0.7"/>
+      <circle cx="50" cy="42" r="0.5" fill="#8C7649" opacity="0.55"/>
+      <circle cx="155" cy="10" r="0.55" fill="#8C7649" opacity="0.65"/>
+      <circle cx="170" cy="46" r="0.45" fill="#8C7649" opacity="0.5"/>
+      <circle cx="240" cy="12" r="0.5" fill="#8C7649" opacity="0.6"/>
+      <circle cx="260" cy="44" r="0.6" fill="#8C7649" opacity="0.7"/>
+      <circle cx="288" cy="14" r="0.45" fill="#8C7649" opacity="0.5"/>
+      <circle cx="345" cy="40" r="0.5" fill="#8C7649" opacity="0.6"/>
+    </svg>
 
     <!-- ━━━ Большая цифра места ━━━ -->
     <div class="place">
       <div class="place-label">Ваше место</div>
-      <div class="place-number" id="placeNumber">12</div>
-      <div class="place-hint">за общим столом</div>
+      <div class="place-number" id="placeNumber">10</div>
     </div>
 
     <!-- ━━━ Тема встречи ━━━ -->
