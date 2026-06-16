@@ -51,6 +51,33 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
 reveals.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
 
+// ───── Scroll-вращение колец сферы ─────
+(function () {
+  const rings = document.getElementById('heroRings');
+  if (!rings) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let latest = 0;
+  let ticking = false;
+
+  const update = () => {
+    // мягкий коэффициент — на полный экран ≈ 40° поворота
+    const deg = latest * 0.05;
+    rings.style.transform = 'rotate(' + deg + 'deg)';
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    latest = window.scrollY || window.pageYOffset;
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
+})();
+
 // Внутренние якоря — плавный скролл + чистка #hash
 document.addEventListener('click', function (e) {
   const a = e.target.closest('a[href^="#"]');

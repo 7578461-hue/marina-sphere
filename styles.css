@@ -330,6 +330,14 @@ img { max-width: 100%; height: auto; display: block; }
   transform-origin: 100px 100px;
   animation: splash-glow-pulse 5s ease-in-out infinite;
 }
+/* Обёртка сферы — нейтральная, центрирование на SVG */
+.hero-sphere-wrap { display: block; }
+/* Кольца вращаются по скроллу (JS) — свечение остаётся на месте */
+.hero-rings {
+  transform-box: view-box;
+  transform-origin: 100px 100px;
+  will-change: transform;
+}
 .hero-inner {
   position: relative;
   z-index: 3;
@@ -592,7 +600,25 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--ivory);
   border-top: 1px solid var(--gold-soft);
   position: relative;
+  overflow: hidden;
 }
+/* Большой полупрозрачный номер на фоне карточки */
+.sphere::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -0.18em;
+  right: 0.1em;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 11rem;
+  line-height: 1;
+  color: var(--gold-soft);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.sphere > * { position: relative; z-index: 1; }
 .sphere-num {
   font-family: var(--serif);
   font-style: italic;
@@ -1039,6 +1065,36 @@ img { max-width: 100%; height: auto; display: block; }
   transform: translateY(0);
 }
 
+/* ─── Каскадное появление (stagger) ─── */
+/* контейнер сам не анимируется как блок — анимируют дети по очереди */
+.reveal.stagger {
+  opacity: 1;
+  transform: none;
+}
+.reveal.stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.stagger.visible > *:nth-child(1) { transition-delay: 0.00s; }
+.reveal.stagger.visible > *:nth-child(2) { transition-delay: 0.10s; }
+.reveal.stagger.visible > *:nth-child(3) { transition-delay: 0.20s; }
+.reveal.stagger.visible > *:nth-child(4) { transition-delay: 0.30s; }
+.reveal.stagger.visible > *:nth-child(5) { transition-delay: 0.40s; }
+.reveal.stagger.visible > *:nth-child(6) { transition-delay: 0.50s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.stagger > * {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ─── Адаптив ─── */
 @media (max-width: 900px) {
   /* Топбар: только бренд. Nav-CTA убрана — дублирует hero-CTA */
@@ -1097,8 +1153,29 @@ img { max-width: 100%; height: auto; display: block; }
 
   /* Светлые секции — внутренние сетки */
   .audience-grid { grid-template-columns: 1fr; gap: 28px; }
-  .spheres-grid { grid-template-columns: 1fr; gap: 16px; }
   .program-grid { grid-template-columns: 1fr; gap: 0; }
+
+  /* Три сферы — горизонтальная swipe-лента (нативный жест на телефоне) */
+  .spheres-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* full-bleed за края контейнера */
+    margin: 0 -20px;
+    padding: 4px 20px 14px;
+  }
+  .spheres-grid::-webkit-scrollbar { display: none; }
+  .spheres-grid .sphere {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+  }
+  /* на свайп-ленте каскад не нужен — карточки появляются сразу */
+  .spheres-grid.stagger > * { opacity: 1; transform: none; transition: none; }
+  .sphere::before { font-size: 9rem; }
   .format-item { grid-template-columns: 1fr; gap: 8px; }
   .format-time { padding-top: 0; }
   .apply-steps { grid-template-columns: 1fr; gap: 28px; }
