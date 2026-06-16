@@ -1003,43 +1003,44 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ─── Адаптив ─── */
 @media (max-width: 900px) {
-  /* Топбар: бренд компактнее, скрыть якоря, оставить только CTA */
-  .topbar { padding: 16px 20px; }
+  /* Топбар: только бренд. Nav-CTA убрана — дублирует hero-CTA */
+  .topbar { padding: 16px 20px; justify-content: center; }
   .brand { gap: 10px; }
   .brand-mark { width: 26px; height: 26px; flex: 0 0 26px; }
   .brand-word { font-size: 0.95rem; letter-spacing: 0.3em; padding-top: 1px; }
-  .topnav { gap: 12px; }
-  .topnav a:not(.nav-cta) { display: none; }
-  .topnav .nav-cta {
-    padding: 9px 14px;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-  }
+  .topnav { display: none; }
 
-  /* Hero: сжатая типографика, аккуратные отступы */
-  .hero { padding-bottom: clamp(60px, 10vw, 90px); }
-  .hero-inner { padding-top: clamp(28px, 6vw, 56px); }
+  /* Hero на мобильном — минимум контента, дышит */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+  }
+  .hero-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   .hero-pill {
     font-size: 0.6rem;
     letter-spacing: 0.18em;
     padding: 8px 14px;
     gap: 8px;
-    margin-bottom: 26px;
+    margin-bottom: 32px;
   }
   .hero-title--private {
-    font-size: clamp(2rem, 7.5vw, 2.8rem);
-    line-height: 1.1;
-    margin-bottom: 24px;
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    line-height: 1.15;
+    margin-bottom: 28px;
   }
   .hero-lede {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.4;
-    margin-bottom: 14px;
-  }
-  .hero-sublede {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
   .hero-cta {
     padding: 15px 24px;
@@ -1047,28 +1048,14 @@ img { max-width: 100%; height: auto; display: block; }
     letter-spacing: 0.22em;
     gap: 10px;
   }
-  .hero-sub-cta {
-    font-size: 0.64rem;
-    letter-spacing: 0.22em;
-  }
 
-  /* Stats: вертикально, тонкие hairlines между ними */
-  .hero-stats {
-    grid-template-columns: 1fr;
-    margin-top: clamp(36px, 6vw, 52px);
-    border-bottom: 1px solid rgba(182, 153, 104, 0.22);
-  }
-  .hero-stat {
-    padding: 18px 0;
-    border-left: 0;
-    border-bottom: 1px solid rgba(182, 153, 104, 0.12);
-  }
-  .hero-stat:last-child { border-bottom: 0; }
-  .hero-stat-num { font-size: 1.5rem; }
-  .hero-stat-cap { font-size: 0.62rem; letter-spacing: 0.2em; }
+  /* На мобильном убираем вторичные элементы — чище first-screen */
+  .hero-sublede,
+  .hero-sub-cta,
+  .hero-stats { display: none; }
 
-  /* Backdrop: чуть приглушить чтобы не давить текст */
-  .hero-backdrop { opacity: 0.7; }
+  /* Backdrop приглушённый */
+  .hero-backdrop { opacity: 0.65; }
 
   /* Светлые секции — внутренние сетки */
   .audience-grid { grid-template-columns: 1fr; gap: 28px; }
