@@ -71,21 +71,23 @@
 }
 .splash--exit .splash-word,
 .splash--exit .splash-tagline,
-.splash--exit .splash-enter {
+.splash--exit .splash-hint {
   animation: splash-text-out 0.7s cubic-bezier(0.55, 0, 0.15, 1) forwards;
 }
 @keyframes splash-text-out {
   to { opacity: 0; transform: translateY(-6px); }
 }
 .splash-mark {
-  width: clamp(260px, 36vw, 400px);
-  height: clamp(260px, 36vw, 400px);
+  display: block;
+  width: clamp(220px, 30vw, 340px);
+  height: clamp(220px, 30vw, 340px);
   color: var(--gold);
-  margin: clamp(28px, 4vw, 44px) 0;
+  margin: 0;
   position: relative;
   z-index: 1;
   animation: splash-breathe 4.5s ease-in-out infinite;
   transform-origin: center;
+  transition: filter 0.4s ease;
 }
 
 /* «Дыхание» — более выраженный, живой пульс */
@@ -156,54 +158,55 @@
   font-style: italic;
   color: var(--gold);
 }
-.splash-enter {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  padding: 20px 50px;
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: var(--gold);
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  text-decoration: none;
+/* Кнопка-обёртка вокруг сферы — клик по эмблеме = вход */
+.splash-mark-btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: clamp(20px, 3vw, 32px) 0;
   cursor: pointer;
-  transition:
-    background 0.3s ease,
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    letter-spacing 0.3s ease,
-    box-shadow 0.3s ease;
   position: relative;
   z-index: 1;
-  box-shadow: 0 8px 28px -8px rgba(182, 153, 104, 0.4);
+  outline: none;
+  transition: filter 0.4s ease;
+  border-radius: 50%;
 }
-.splash-enter:hover {
-  background: #C9A977;
-  border-color: #C9A977;
-  transform: translateY(-2px);
-  letter-spacing: 0.46em;
-  box-shadow: 0 14px 36px -10px rgba(182, 153, 104, 0.55);
+.splash-mark-btn:hover .splash-mark,
+.splash-mark-btn:focus-visible .splash-mark {
+  filter: drop-shadow(0 0 24px rgba(182, 153, 104, 0.35));
 }
-.splash-enter .arrow {
+.splash-mark-btn:focus-visible {
+  outline: 1px solid rgba(182, 153, 104, 0.5);
+  outline-offset: 12px;
+}
+.splash-mark-btn:active {
+  opacity: 0.92;
+}
+
+/* Подсказка под tagline — что сфера кликабельна */
+.splash-hint {
   font-family: var(--serif);
-  font-size: 1.1rem;
-  letter-spacing: 0;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: rgba(182, 153, 104, 0.6);
+  margin: clamp(24px, 3vw, 36px) 0 0;
+  position: relative;
+  z-index: 1;
+  animation: hint-pulse 3.5s ease-in-out infinite;
+}
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 0.9; }
 }
 
 @media (max-width: 560px) {
   .splash { padding: 30px; }
   .splash-word { font-size: 2rem; letter-spacing: 0.36em; padding-left: 0.36em; }
   .splash-tagline { font-size: 1.05rem; max-width: 320px; }
-  .splash-enter {
-    padding: 16px 32px;
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-  }
-  .splash-enter:hover { letter-spacing: 0.34em; }
+  .splash-hint { font-size: 0.85rem; margin-top: 28px; }
 }
 
 * { box-sizing: border-box; }
