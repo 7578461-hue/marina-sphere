@@ -1,5 +1,41 @@
 // Marina Lodvikova · «Сфера» — interactions
 
+// ───── SPLASH «вход в клуб» ─────
+(function () {
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+
+  // Уже входили в этой сессии — не показываем заново
+  try {
+    if (sessionStorage.getItem('sphere-entered') === '1') {
+      splash.remove();
+      return;
+    }
+  } catch (_) { /* sessionStorage недоступен — ничего страшного */ }
+
+  // На splash страница не должна скроллиться
+  document.body.style.overflow = 'hidden';
+
+  const enter = document.getElementById('splash-enter');
+  const dismiss = () => {
+    splash.classList.add('splash--exit');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem('sphere-entered', '1'); } catch (_) {}
+    setTimeout(() => splash.remove(), 1100);
+  };
+
+  if (enter) enter.addEventListener('click', dismiss);
+  // Клавиша Enter / Space — тоже впускают
+  document.addEventListener('keydown', function onKey(e) {
+    if (splash.classList.contains('splash--exit')) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      dismiss();
+      document.removeEventListener('keydown', onKey);
+    }
+  });
+})();
+
 // Reveal on scroll
 const reveals = document.querySelectorAll('.reveal');
 const flip = (el) => el.classList.add('visible');
