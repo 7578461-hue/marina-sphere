@@ -21,7 +21,7 @@
     splash.classList.add('splash--exit');
     document.body.style.overflow = '';
     try { sessionStorage.setItem('sphere-entered', '1'); } catch (_) {}
-    setTimeout(() => splash.remove(), 1100);
+    setTimeout(() => splash.remove(), 1700);
   };
 
   if (enter) enter.addEventListener('click', dismiss);

@@ -43,9 +43,9 @@
   text-align: center;
   padding: 40px;
   transition:
-    opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 1.1s cubic-bezier(0.4, 0, 0.2, 1),
-    filter 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 1.6s cubic-bezier(0.55, 0, 0.15, 1),
+    transform 1.8s cubic-bezier(0.55, 0, 0.15, 1),
+    filter   1.4s cubic-bezier(0.55, 0, 0.15, 1);
 }
 .splash::after {
   content: '';
@@ -58,25 +58,40 @@
 }
 .splash--exit {
   opacity: 0;
-  transform: scale(1.08);
-  filter: blur(4px);
+  transform: scale(1.18);
+  filter: blur(10px);
   pointer-events: none;
+}
+/* На exit эмблема «улетает» крупнее остального — ощущение полёта сквозь сферу */
+.splash--exit .splash-mark {
+  animation: splash-mark-zoom 1.6s cubic-bezier(0.55, 0, 0.15, 1) forwards;
+}
+@keyframes splash-mark-zoom {
+  to { transform: scale(1.9); opacity: 0; filter: blur(2px); }
+}
+.splash--exit .splash-word,
+.splash--exit .splash-tagline,
+.splash--exit .splash-enter {
+  animation: splash-text-out 0.7s cubic-bezier(0.55, 0, 0.15, 1) forwards;
+}
+@keyframes splash-text-out {
+  to { opacity: 0; transform: translateY(-6px); }
 }
 .splash-mark {
   width: clamp(260px, 36vw, 400px);
   height: clamp(260px, 36vw, 400px);
   color: var(--gold);
-  margin-bottom: clamp(28px, 4vw, 44px);
+  margin: clamp(28px, 4vw, 44px) 0;
   position: relative;
   z-index: 1;
-  animation: splash-breathe 6.5s ease-in-out infinite;
+  animation: splash-breathe 4.5s ease-in-out infinite;
   transform-origin: center;
 }
 
-/* «Дыхание» — общий медленный пульс mark целиком */
+/* «Дыхание» — более выраженный, живой пульс */
 @keyframes splash-breathe {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.045); }
+  0%, 100% { transform: scale(1);    }
+  50%      { transform: scale(1.085); }
 }
 
 /* Пульс свечения за кольцами — чуть в противофазе с breath */
@@ -121,7 +136,7 @@
   text-transform: uppercase;
   color: var(--gold);
   padding-left: 0.42em; /* оптический центр при letter-spacing */
-  margin-bottom: clamp(36px, 5vw, 56px);
+  margin: 0;
   position: relative;
   z-index: 1;
 }
@@ -144,8 +159,8 @@
 .splash-enter {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 18px 44px;
+  gap: 18px;
+  padding: 20px 50px;
   font-family: var(--sans);
   font-size: 0.78rem;
   font-weight: 500;
@@ -154,17 +169,24 @@
   color: var(--ink);
   background: var(--gold);
   border: 1px solid var(--gold);
+  border-radius: 999px;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.2s ease, letter-spacing 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    letter-spacing 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
   z-index: 1;
+  box-shadow: 0 8px 28px -8px rgba(182, 153, 104, 0.4);
 }
 .splash-enter:hover {
   background: #C9A977;
   border-color: #C9A977;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   letter-spacing: 0.46em;
+  box-shadow: 0 14px 36px -10px rgba(182, 153, 104, 0.55);
 }
 .splash-enter .arrow {
   font-family: var(--serif);
