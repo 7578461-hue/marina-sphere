@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=13" />
+  <link rel="stylesheet" href="/styles.css?v=14" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="theme-color" content="#0E0E0E" />
 
@@ -94,29 +94,6 @@
       </div>
     </nav>
 
-    <!-- Backdrop emblem — большой glyph «Сферы» как «маска» клуба -->
-    <svg class="hero-backdrop" viewBox="0 0 600 600" aria-hidden="true">
-      <defs>
-        <radialGradient id="emblemGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#B69968" stop-opacity="0.18"/>
-          <stop offset="55%" stop-color="#B69968" stop-opacity="0.04"/>
-          <stop offset="100%" stop-color="#B69968" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <!-- glow за эмблемой -->
-      <circle cx="300" cy="300" r="280" fill="url(#emblemGlow)"/>
-      <!-- внешнее кольцо -->
-      <circle cx="300" cy="300" r="240" fill="none" stroke="#B69968" stroke-width="0.7" opacity="0.38"/>
-      <!-- среднее кольцо -->
-      <circle cx="300" cy="300" r="178" fill="none" stroke="#B69968" stroke-width="0.5" opacity="0.24"/>
-      <!-- внутреннее кольцо -->
-      <circle cx="300" cy="300" r="116" fill="none" stroke="#B69968" stroke-width="0.4" opacity="0.15"/>
-      <!-- орбитальные точки-светила -->
-      <circle cx="450" cy="180" r="3" fill="#B69968" opacity="0.6"/>
-      <circle cx="156" cy="402" r="2.4" fill="#B69968" opacity="0.42"/>
-      <circle cx="420" cy="430" r="1.8" fill="#B69968" opacity="0.32"/>
-    </svg>
-
     <div class="container hero-inner">
 
       <div class="hero-pill">
@@ -130,9 +107,33 @@
       </div>
 
       <h1 class="hero-title hero-title--private">
-        Закрытый круг <em>встреч</em><br/>
-        для&nbsp;тех, кто&nbsp;выбрал&nbsp;глубину
+        Закрытая группа,<br/>
+        <em>для&nbsp;тех, кто&nbsp;выбрал&nbsp;глубину</em>
       </h1>
+
+      <!-- Видимая дышащая сфера — центральный визуальный элемент -->
+      <svg class="hero-sphere" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <radialGradient id="heroSphereGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#B69968" stop-opacity="0.32"/>
+            <stop offset="55%" stop-color="#B69968" stop-opacity="0.07"/>
+            <stop offset="100%" stop-color="#B69968" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle class="hero-sphere-glow" cx="100" cy="100" r="98" fill="url(#heroSphereGlow)"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#B69968" stroke-width="0.6"/>
+        <circle cx="100" cy="100" r="62" fill="none" stroke="#B69968" stroke-width="0.5" opacity="0.55"/>
+        <circle cx="100" cy="100" r="40" fill="none" stroke="#B69968" stroke-width="0.4" opacity="0.4"/>
+        <g class="orbit orbit-outer">
+          <circle cx="100" cy="14" r="2.4" fill="#B69968"/>
+        </g>
+        <g class="orbit orbit-middle">
+          <circle cx="100" cy="38" r="1.7" fill="#B69968" opacity="0.82"/>
+        </g>
+        <g class="orbit orbit-inner">
+          <circle cx="100" cy="60" r="1.2" fill="#B69968" opacity="0.68"/>
+        </g>
+      </svg>
 
       <p class="hero-lede">
         Без&nbsp;шума. Без&nbsp;публичности. <em>Только&nbsp;свои.</em>
