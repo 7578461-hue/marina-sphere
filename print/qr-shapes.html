@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сфера · QR — варианты формы</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0E0E0E;
+      --paper:     #FAF7F0;
+      --gold:      #8C7649;
+      --gold-soft: #B69968;
+      --graphite:  #2A2520;
+      --hairline:  rgba(182, 153, 104, 0.3);
+      --serif:     'Cormorant Garamond', 'Times New Roman', serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: #15110d;
+      font-family: var(--serif);
+      color: #EAE6DC;
+      padding: 60px 20px 80px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.005em;
+      color: #F2EEE4;
+      margin-bottom: 14px;
+    }
+    h1 em { font-style: italic; color: var(--gold-soft); }
+
+    .subtitle {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: rgba(182, 153, 104, 0.7);
+      margin-bottom: 64px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 48px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .shape-card {
+      background: var(--paper);
+      color: var(--graphite);
+      padding: 36px 28px 28px;
+      border: 1px solid var(--hairline);
+      box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .shape-card img {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+    }
+
+    .shape-name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.75rem;
+      color: var(--graphite);
+    }
+
+    .shape-tagline {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: -14px;
+    }
+
+    .shape-note {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(42, 37, 32, 0.65);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .shape-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .shape-actions a {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 9px 18px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .shape-actions a:hover { background: var(--gold); color: var(--paper); }
+
+    .hint {
+      max-width: 600px;
+      margin: 70px auto 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: rgba(234, 230, 220, 0.55);
+    }
+    .hint strong {
+      font-style: normal;
+      font-weight: 400;
+      color: var(--gold-soft);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>QR в&nbsp;форме <em>фигуры</em></h1>
+  <div class="subtitle">3 варианта · выбери любимый</div>
+
+  <div class="gallery">
+
+    <!-- ━━━ КАПЛЯ ━━━ -->
+    <div class="shape-card">
+      <img src="qr-shape-drop.svg" alt="QR в форме капли" />
+      <div class="shape-name">Капля</div>
+      <div class="shape-tagline">Мягкая · текучая</div>
+      <p class="shape-note">Символ мягкой силы. Асимметрия — острая вершина, округлое основание. Подходит к женственной эстетике клуба.</p>
+      <div class="shape-actions">
+        <a href="qr-shape-drop.svg" target="_blank">Открыть SVG</a>
+      </div>
+    </div>
+
+    <!-- ━━━ ВОСЬМИУГОЛЬНИК ━━━ -->
+    <div class="shape-card">
+      <img src="qr-shape-octagon.svg" alt="QR в форме восьмиугольника" />
+      <div class="shape-name">Восьмиугольник</div>
+      <div class="shape-tagline">Печать · клубный знак</div>
+      <p class="shape-note">Благородная форма старой клубной печати — как сургучный оттиск или клеймо на серебре. Строгий, мужской характер.</p>
+      <div class="shape-actions">
+        <a href="qr-shape-octagon.svg" target="_blank">Открыть SVG</a>
+      </div>
+    </div>
+
+    <!-- ━━━ ГЕКСАГОН ━━━ -->
+    <div class="shape-card">
+      <img src="qr-shape-hexagon.svg" alt="QR в форме гексагона" />
+      <div class="shape-name">Гексагон</div>
+      <div class="shape-tagline">Соты · структура</div>
+      <p class="shape-note">6 граней — соты, структура мёда, кристаллическая решётка. Современнее ромба, мягче восьмиугольника. Универсальная форма.</p>
+      <div class="shape-actions">
+        <a href="qr-shape-hexagon.svg" target="_blank">Открыть SVG</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hint">
+    Перед выбором — <strong>наведи камеру телефона на каждый QR</strong>. Все три читаются, но иногда нестандартные формы хуже работают на старых камерах. Тот, что считывается быстрее всего — самый практичный.
+  </div>
+
+</body>
+</html>
