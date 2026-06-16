@@ -63,12 +63,55 @@
   pointer-events: none;
 }
 .splash-mark {
-  width: clamp(160px, 22vw, 220px);
-  height: clamp(160px, 22vw, 220px);
+  width: clamp(260px, 36vw, 400px);
+  height: clamp(260px, 36vw, 400px);
   color: var(--gold);
   margin-bottom: clamp(28px, 4vw, 44px);
   position: relative;
   z-index: 1;
+  animation: splash-breathe 6.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* «Дыхание» — общий медленный пульс mark целиком */
+@keyframes splash-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.045); }
+}
+
+/* Пульс свечения за кольцами — чуть в противофазе с breath */
+.splash-glow {
+  transform-origin: 100px 100px;
+  animation: splash-glow-pulse 5s ease-in-out infinite;
+}
+@keyframes splash-glow-pulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.06); }
+}
+
+/* Орбитальные точки — каждая своя скорость и направление */
+.orbit {
+  transform-origin: 100px 100px;
+  transform-box: view-box;
+}
+.orbit-outer  { animation: orbit-cw  42s linear infinite; }
+.orbit-middle { animation: orbit-ccw 28s linear infinite; }
+.orbit-inner  { animation: orbit-cw  18s linear infinite; }
+
+@keyframes orbit-cw {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbit-ccw {
+  from { transform: rotate(0deg);    }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Уважаем prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .splash-mark,
+  .splash-glow,
+  .orbit { animation: none !important; }
 }
 .splash-word {
   font-family: var(--serif);
