@@ -180,30 +180,16 @@
       color: var(--gold);
     }
 
-    /* ─── QR-код ─── */
+    /* ─── QR-код в форме сферы ─── */
     .qr-wrap {
       position: relative;
-      padding: 8mm;
-      background: #FFFFFF;
-      border: 0.4mm solid var(--hairline);
-      box-shadow: 0 4mm 20mm rgba(42, 37, 32, 0.1);
+      filter: drop-shadow(0 4mm 16mm rgba(42, 37, 32, 0.12));
     }
-    .qr-wrap::before, .qr-wrap::after,
-    .qr-corner-tr, .qr-corner-bl {
-      content: '';
-      position: absolute;
-      width: 5mm; height: 5mm;
-      border: 0.7mm solid var(--gold);
-    }
-    .qr-wrap::before { top: -1.5mm; left: -1.5mm; border-right: 0; border-bottom: 0; }
-    .qr-wrap::after  { bottom: -1.5mm; right: -1.5mm; border-left: 0; border-top: 0; }
-    .qr-corner-tr    { top: -1.5mm; right: -1.5mm; border-left: 0; border-bottom: 0; }
-    .qr-corner-bl    { bottom: -1.5mm; left: -1.5mm; border-right: 0; border-top: 0; }
 
     .qr-image {
       display: block;
-      width: 90mm;
-      height: 90mm;
+      width: 100mm;
+      height: 100mm;
     }
 
     .qr-cta {
@@ -278,9 +264,7 @@
       </h1>
 
       <div class="qr-wrap">
-        <span class="qr-corner-tr"></span>
-        <span class="qr-corner-bl"></span>
-        <img class="qr-image" src="qr-sphere.png" alt="QR-код · marina-sphere.vercel.app" />
+        <img class="qr-image" src="qr-sphere-shaped.svg" alt="QR-код · marina-sphere.vercel.app" />
       </div>
 
       <div class="qr-cta">
