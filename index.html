@@ -14,7 +14,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=3" />
+  <link rel="stylesheet" href="/styles.css?v=4" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#0E0E0E" />
 
   <script>
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -29,7 +31,17 @@
   <!-- ───────── HERO (тёмный · private banking) ───────── -->
   <header class="hero">
     <nav class="topbar">
-      <a href="#" class="brand">Сфера</a>
+      <a href="#" class="brand" aria-label="Сфера — на главную">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <!-- внешний круг -->
+          <circle cx="20" cy="20" r="18.4" fill="none" stroke="currentColor" stroke-width="0.7" />
+          <!-- внутренний круг (мягкая сила = многослойность) -->
+          <circle cx="20" cy="20" r="13.2" fill="none" stroke="currentColor" stroke-width="0.45" opacity="0.45" />
+          <!-- акцентная точка-свет в верхней четверти -->
+          <circle cx="24.6" cy="13" r="1.15" fill="currentColor" />
+        </svg>
+        <span class="brand-word">Сфера</span>
+      </a>
       <div class="topnav">
         <a href="#audience">Для кого</a>
         <a href="#program">Программа</a>
@@ -421,7 +433,14 @@
   <!-- ───────── ФУТЕР ───────── -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-brand">Сфера</div>
+      <div class="footer-brand">
+        <svg class="footer-mark" viewBox="0 0 60 60" aria-hidden="true">
+          <circle cx="30" cy="30" r="28" fill="none" stroke="currentColor" stroke-width="0.55" />
+          <circle cx="30" cy="30" r="20.5" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.42" />
+          <circle cx="37" cy="20" r="1.6" fill="currentColor" />
+        </svg>
+        <div class="footer-word">Сфера</div>
+      </div>
       <div class="footer-links">
         <a href="#audience">Для кого</a>
         <a href="#program">Программа</a>
