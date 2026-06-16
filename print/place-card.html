@@ -19,22 +19,22 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:        #0E0E0E;
-      --ink-edge:   #050505;
-      --gold:       #B69968;
-      --gold-soft:  #8C7649;
-      --cream:      #EAE6DC;
-      --cream-dim:  rgba(234, 230, 220, 0.55);
-      --hairline:   rgba(182, 153, 104, 0.42);
+      --paper:      #FAF7F0;
+      --paper-2:    #F4EFE3;
+      --gold:       #8C7649;     /* глубже на светлом — для контраста */
+      --gold-soft:  #B69968;     /* мягкое золото для деталей */
+      --graphite:   #2A2520;
+      --graphite-2: rgba(42, 37, 32, 0.62);
+      --hairline:   rgba(42, 37, 32, 0.22);
       --serif:      'Cormorant Garamond', 'Times New Roman', serif;
       --sans:       'Inter', system-ui, sans-serif;
     }
 
     /* ─── Wrapper для preview в браузере ─── */
     body {
-      background: #1a1816;
+      background: #2a2520;
       font-family: var(--serif);
-      color: var(--cream);
+      color: var(--graphite);
       -webkit-font-smoothing: antialiased;
       padding: 30px 20px;
       min-height: 100vh;
@@ -62,7 +62,7 @@
       width: 64px;
       background: transparent;
       border: 1px solid rgba(182, 153, 104, 0.5);
-      color: var(--gold);
+      color: var(--gold-soft);
       font-family: var(--serif);
       font-size: 1rem;
       text-align: center;
@@ -70,8 +70,8 @@
       border-radius: 4px;
     }
     .controls button {
-      background: var(--gold);
-      color: var(--ink);
+      background: var(--gold-soft);
+      color: #0E0E0E;
       border: 0;
       padding: 8px 16px;
       font-family: var(--sans);
@@ -89,26 +89,15 @@
       width: 210mm;
       height: 297mm;
       background:
-        radial-gradient(ellipse at 50% 38%, rgba(182, 153, 104, 0.08) 0%, transparent 55%),
-        var(--ink);
-      color: var(--cream);
+        radial-gradient(ellipse at 50% 38%, rgba(140, 118, 73, 0.07) 0%, transparent 55%),
+        var(--paper);
+      color: var(--graphite);
       padding: 22mm 18mm;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 12px 60px rgba(0, 0, 0, 0.6);
-    }
-
-    /* Лёгкое зерно поверх ink — бархат на печати */
-    .a4::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.18;
-      mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      box-shadow: 0 12px 60px rgba(0, 0, 0, 0.5);
     }
 
     /* Декоративные орбиты на фоне */
@@ -121,7 +110,7 @@
       height: 180mm;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.7;
     }
     .a4 > *:not(.a4-orbits) { position: relative; z-index: 1; }
 
@@ -181,7 +170,8 @@
       font-size: 2.4mm;
       letter-spacing: 0.34em;
       text-transform: uppercase;
-      color: rgba(182, 153, 104, 0.75);
+      color: var(--gold);
+      opacity: 0.85;
       margin-top: 5mm;
     }
 
@@ -199,7 +189,7 @@
       font-size: 2.6mm;
       letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: var(--cream-dim);
+      color: var(--graphite-2);
     }
     .place-number {
       font-family: var(--serif);
@@ -209,14 +199,14 @@
       line-height: 0.85;
       color: var(--gold);
       letter-spacing: -0.04em;
-      text-shadow: 0 4mm 16mm rgba(182, 153, 104, 0.18);
+      text-shadow: 0 4mm 14mm rgba(140, 118, 73, 0.14);
     }
     .place-hint {
       font-family: var(--serif);
       font-weight: 300;
       font-style: italic;
       font-size: 4mm;
-      color: rgba(234, 230, 220, 0.5);
+      color: rgba(42, 37, 32, 0.5);
     }
 
     /* ─── Тема встречи ─── */
@@ -230,7 +220,8 @@
       font-size: 2.4mm;
       letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: rgba(182, 153, 104, 0.75);
+      color: var(--gold);
+      opacity: 0.85;
       margin-bottom: 5mm;
     }
     .theme-title {
@@ -239,7 +230,7 @@
       font-style: italic;
       font-size: 22mm;
       letter-spacing: 0.005em;
-      color: var(--cream);
+      color: var(--graphite);
       line-height: 1;
     }
     .theme-ornament {
@@ -259,7 +250,7 @@
       font-size: 2.4mm;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: rgba(234, 230, 220, 0.42);
+      color: rgba(42, 37, 32, 0.48);
     }
     .footer-meta .dot { color: var(--gold); margin: 0 0.7em; }
 
@@ -292,20 +283,20 @@
     <!-- Hairline-рамка с уголками -->
     <div class="a4-frame"></div>
 
-    <!-- Декоративные орбиты на фоне -->
+    <!-- Декоративные орбиты на фоне (graphite hairlines на cream) -->
     <svg class="a4-orbits" viewBox="0 0 200 200">
       <defs>
         <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#B69968" stop-opacity="0.12"/>
-          <stop offset="100%" stop-color="#B69968" stop-opacity="0"/>
+          <stop offset="0%" stop-color="#8C7649" stop-opacity="0.07"/>
+          <stop offset="100%" stop-color="#8C7649" stop-opacity="0"/>
         </radialGradient>
       </defs>
       <circle cx="100" cy="100" r="98" fill="url(#orbGlow)"/>
-      <circle cx="100" cy="100" r="90" fill="none" stroke="#B69968" stroke-width="0.25" opacity="0.7"/>
-      <circle cx="100" cy="100" r="68" fill="none" stroke="#B69968" stroke-width="0.22" opacity="0.5"/>
-      <circle cx="100" cy="100" r="46" fill="none" stroke="#B69968" stroke-width="0.18" opacity="0.35"/>
-      <circle cx="124" cy="35" r="0.9" fill="#B69968"/>
-      <circle cx="63" cy="156" r="0.7" fill="#B69968" opacity="0.65"/>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#2A2520" stroke-width="0.22" opacity="0.32"/>
+      <circle cx="100" cy="100" r="68" fill="none" stroke="#2A2520" stroke-width="0.2" opacity="0.22"/>
+      <circle cx="100" cy="100" r="46" fill="none" stroke="#2A2520" stroke-width="0.18" opacity="0.16"/>
+      <circle cx="124" cy="35" r="0.9" fill="#8C7649"/>
+      <circle cx="63" cy="156" r="0.7" fill="#8C7649" opacity="0.65"/>
     </svg>
 
     <!-- ━━━ Брендинг ━━━ -->
