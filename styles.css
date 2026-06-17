@@ -550,6 +550,13 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--gold-soft);
 }
 .section--ink .section-title em { color: var(--gold); }
+.title-alias {
+  font-style: italic;
+  font-size: 0.5em;
+  color: var(--gold-soft);
+  letter-spacing: 0.02em;
+  vertical-align: baseline;
+}
 .section-lede {
   font-family: var(--serif);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
