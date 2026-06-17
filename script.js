@@ -98,5 +98,5 @@ document.addEventListener('click', function (e) {
   const tpl = a.getAttribute('data-tg');
   if (!tpl) return;
   e.preventDefault();
-  window.open('https://t.me/Diamondmari?text=' + encodeURIComponent(tpl), '_blank', 'noopener');
+  window.open('https://t.me/Marina_Lodvikova?text=' + encodeURIComponent(tpl), '_blank', 'noopener');
 });
