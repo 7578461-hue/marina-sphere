@@ -923,6 +923,52 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ─── КАК ПОПАСТЬ ─── */
+/* ─── Старт двух групп ─── */
+.launch {
+  max-width: 620px;
+  margin: 0 auto clamp(40px, 6vw, 64px);
+  text-align: center;
+  padding: clamp(28px, 4vw, 40px) clamp(24px, 4vw, 48px);
+  border: 1px solid var(--hairline);
+  background: var(--ivory);
+}
+.launch-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 22px;
+}
+.launch-dates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 56px);
+}
+.launch-date-num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.launch-date-cap {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--graphite-2);
+}
+.launch-sep {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--gold-soft);
+  opacity: 0.5;
+}
+
 .apply {
   text-align: center;
   max-width: 720px;
